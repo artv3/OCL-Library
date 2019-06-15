@@ -244,19 +244,19 @@ ocl_device ocl_setup::displayDevices(){
   std::cout << shortInfo;  
 
   printf(question1.c_str(),di,dj);
-  gets(buffer);
+  fgets(buffer,sizeof(buffer),stdin);
 
   if(sscanf(buffer,"%d %d",&i,&j) == 2)
     return ocl_device(pID[i],dID[i][j]);
 
   std::cout << longInfo;
   printf(question2.c_str(),di,dj);
-  gets(buffer);
+  fgets(buffer,sizeof(buffer),stdin);
 
   while(sscanf(buffer,"%d %d",&i,&j) != 2){
     std::cout << "Wrong Input, please try again\n";
     printf(question2.c_str(),di,dj);
-    gets(buffer);
+    fgets(buffer,sizeof(buffer),stdin);
   }
 
   return ocl_device(pID[i],dID[i][j]);
